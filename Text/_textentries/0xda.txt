@@ -1,0 +1,2 @@
+Place a mine on[NL]
+the map[X]

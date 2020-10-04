@@ -1,0 +1,13 @@
+#include "Extensions/Hack Installation.txt"
+
+#include "_FE8EssentialFixes.event"
+
+// placeholder mov getter; used for the staff ai
+ALIGN 4
+MovGetter:
+#include "MovGetter.lyn.event"
+ALIGN 4
+
+#include "RemoveTrapFix.lyn.event"
+
+#include "CustomItems/_CustomItemSetup.event"
