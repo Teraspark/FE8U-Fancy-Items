@@ -1,0 +1,29 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# rom related files
+*.gba
+*.sav
+*.sa1
+*.sgm
+
+# stuff that gets generated from a full build
+Text/.TextEntries
+Text/_textentries
+Text/Text Definitions.event
