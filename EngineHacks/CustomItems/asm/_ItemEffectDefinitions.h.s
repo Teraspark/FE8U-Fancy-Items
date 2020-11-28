@@ -20,9 +20,11 @@
 
 @----------------------------------------------------------
 @Relevant Ram Offsets
+	.set GameDataStruct,               0x0202BCB0
 	.set ChapterDataStruct,            0x0202BCF0 		
 	.set CurrentMapSize,               0x0202E4D4 		
 	.set UnitMapRows,                  0x0202E4D8 		
+	.set TerrainMapRows,               0x0202E4DC
 	.set MoveCostMapRows,              0x0202E4E0 		
 	.set RangeMapRows,                 0x0202E4E4 		
 	.set FogMapRows,                   0x0202E4E8
@@ -32,6 +34,8 @@
 	.set TargetNum,                    0x0203E0EC 		
 	.set SelectedUnit,                 0x02033F3C 		
 	.set ActiveUnit,                   0x03004E50 		
+	.set BattleActingUnit,             0x0203A4EC @attacker
+	.set BattleTargetUnit,             0x0203A56C @defender
 @----------------------------------------------------------
 @List of Relevant Routines
 
@@ -72,6 +76,12 @@
 		@ arguments: r0 = Unit Struct pointer, r1 = Item Short;
 		@ returns = 1 if unit can use item, 0 otherwise
 	.set StaffHitRate,                 0x0802CCDC 	@
+	.set Item_GetMight,                0x080175DC 
+		@ arguments: r0 = Item Short
+		@ returns: r0 = Might
+	.set Item_GetWeight,               0x0801760C
+		@ arguments: r0 = Item Short
+		@ returns: r0 = weight
 
 	@Range and Move Cost Maps Routines
 	.set FillMap,                      0x080197E4	@
