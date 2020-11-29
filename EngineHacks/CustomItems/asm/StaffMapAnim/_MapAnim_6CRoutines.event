@@ -18,6 +18,7 @@
 	//focus camera on where unit will be after action
 	BattleActingUnit_DestFocus:
 	#incbin "BActingUnit_Focus.dmp"
+
 	BattleTargetUnit_DestFocus:
 	#incbin "BTargetUnit_Focus.dmp"
 	
@@ -31,6 +32,11 @@
 	
 	LightRune_AnimPosition:
 	#incbin "LightRune_AnimPositionSet.dmp"
+
+	RingGlow_TargetUnitFocus:
+	#include "RingGlowAnimFocus_TargetUnit.lyn.event"
+	POIN AnimBG0_UnitFocus
+
 //Tile changes
 	TargetTile_TileChange:
 	#incbin "TileChange.dmp"

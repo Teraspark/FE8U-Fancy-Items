@@ -1,31 +1,33 @@
 .thumb
+.include "_ItemEffectDefinitions.h.s"
+
+@arguments:
+	@r0 = proc pointer
+	@r1 = item effect routine
 
 push	{r4-r6, r14}
 mov 	r6, r0
 mov 	r5, r1
-ldr 	r4, ActionStruct
+ldr 	r4, =gActionData
 ldrb 	r0, [r4, #0xC]		@get deployment id of attacker
 
-ldr 	r3, RamCharByID
-bl		jump				@get char pointer of attacker
+_blh GetUnit
 
 ldrb 	r1, [r4, #0x12] 	@get the used item slot
 
-ldr 	r3, AttackerUpdate
-bl  	jump				@update attacker data in ram
+_blh SetupActiveUnitForStaff
 
 @update defender if necessary
 ldrb 	r0, [r4, #0xD]
 cmp 	r0, #0x0
 beq 	skipDefender
-ldr 	r3, RamCharByID
-bl  	jump
-ldr 	r3, DefenderUpdate
-bl jump
+_blh GetUnit
+_blh SetupTargetUnitForStaff
 skipDefender:
 
 @the actual item effect
 mov 	r0, r6
+_blr r5
 mov 	r14, r5
 .short 0xf800
 
@@ -43,15 +45,8 @@ bx  	r0
 jump:
 bx r3
 
+.ltorg
 .align
-ActionStruct:
-.long 0x203A958
-RamCharByID:
-.long 0x8019430 | 1
-AttackerUpdate:
-.long 0x802CB24 | 1
-DefenderUpdate:
-.long 0x802CBC8 | 1
 Expthing:
 .long 0x802CC54 | 1
 ItemGraphics:

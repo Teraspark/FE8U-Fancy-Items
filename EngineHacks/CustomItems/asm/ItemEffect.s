@@ -1,5 +1,5 @@
 .thumb
-.include "_ItemEffectDefinitions.s"
+.include "_ItemEffectDefinitions.h.s"
 
 @arguments:
 	@r0 = proc pointer
@@ -8,25 +8,21 @@
 push	{r4-r6, r14}
 mov 	r6, r0
 mov 	r5, r1
-ldr 	r4, =ActionStruct
+ldr 	r4, =gActionData
 ldrb 	r0, [r4, #0xC]		@get deployment id of attacker
 
-ldr 	r3, =RamUnitByID|1
-bl		jump				@get char pointer of attacker
+_blh GetUnit
 
 ldrb 	r1, [r4, #0x12] 	@get the used item slot
 
-ldr 	r3, =BActingUnitUpdate|1
-bl  	jump				@update attacker data in ram
+_blh SetupActiveUnitForStaff
 
 @update defender if necessary
 ldrb 	r0, [r4, #0xD]
 cmp 	r0, #0x0
 beq 	skipDefender
-ldr 	r3, =RamUnitByID|1
-bl  	jump
-ldr 	r3, =BTargetUnitUpdate|1
-bl jump
+_blh GetUnit
+_blh SetupTargetUnitForStaff
 skipDefender:
 
 @update exp and item durability

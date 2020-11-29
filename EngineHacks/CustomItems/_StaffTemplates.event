@@ -2,8 +2,8 @@
 	#define STAFF_TEMPLATES
 	
 	#include "ItemTargeting/_ItemEffectTargeting.event"
-	#include "ItemProcs/Freeselect/FreeSelect6C.event"
-	#include "StaffAI/_StaffAI_Setup.event"
+	#include "asm/Freeselect/FreeSelect6C.event"
+	//#include "StaffAI/_StaffAI_Setup.event"
 	
 	//#define TargetSelection 0x0804FA3C
 	
@@ -15,10 +15,10 @@
 	#define rfItemRangeSetup(TConditon, RangeBuilder) "SHORT 0xB500 0x4902; BL(RangeBuilder); SHORT 0xBC08 0x4718; POIN (TConditon | 1)"
 
 	Staff_UETemplate: //template for staff effects
-	#incbin "StaffEffects/StaffEffect.dmp"
+	#include "asm/StaffEffect.lyn.event"
 	
 	Staff_IETemplate: //template for item effects
-	#incbin "StaffEffects/ItemEffect.dmp"
+	#include "asm/ItemEffect.lyn.event"
 	ALIGN 4
 	
 	Staff_FSTargeting:
@@ -37,4 +37,7 @@
 	
 	rfTrueCheck:
 	SHORT 0x2001 0x4770
+
+	#include "asm/_6C_Basic_Cases/_Staff6C_BasicCases.event"
+	#include "asm/StaffMapAnim/_MapAnim_6CRoutines.event"
 #endif

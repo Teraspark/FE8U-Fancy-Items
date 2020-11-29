@@ -21,7 +21,7 @@
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef StealStaffHelpText
@@ -32,14 +32,13 @@
 #define StealStaff_TakeWeapons
 
 //creates the staff's map animation
-//#include "6CSetup/StealStaff_MapAnimSetup.event"
 ALIGN 4
-#include "ItemProcs/StealStaff_6CSetup.event"
+#include "Menu/StealStaff_6CSetup.event"
 ALIGN 4
-#include "ItemProcs/thief/thief.event"
+#include "Animation/thief.event"
 
 StealStaff_TCondition:
-	#incbin "ItemUsability/StealStaff_TCondition.dmp"
+	#incbin "Usability/StealStaff_TCondition.dmp"
 	POIN 0x24D8C
 	#ifdef StealStaff_TakeWeapons
 		POIN rfTrueCheck
@@ -55,7 +54,7 @@ rfStaffUsability(Staff_TSUsability, StealStaff_UseCondition, StealStaff_RangeSet
 ALIGN 4
 
 StealStaff_UseCondition:
-#incbin "ItemUsability/IsUnitInventoryFull.dmp"
+#incbin "Usability/IsUnitInventoryFull.dmp"
 ALIGN 4
 
 StealStaff_Targeting: 	//the hard part
@@ -66,4 +65,4 @@ StealStaff_ItemEffect:
 rfStaffEffect(Staff_UETemplate, Staff_StealItem)
 
 Staff_StealItem:
-#incbin "StaffEffects/StealStaff_Effect.dmp"
+#include "Effect/StealStaff_Effect.lyn.event"
