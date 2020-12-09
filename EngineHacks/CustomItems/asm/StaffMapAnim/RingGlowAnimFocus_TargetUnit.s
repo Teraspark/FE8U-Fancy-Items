@@ -1,6 +1,6 @@
 .thumb
 @.include "../_FE8Definitions.h.s"
-.include "../_ItemEffectDefinitions.h.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 .equ AnimPosition_Unit, OffsetList + 0x0
 

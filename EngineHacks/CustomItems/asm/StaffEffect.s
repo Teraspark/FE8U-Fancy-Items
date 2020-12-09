@@ -1,5 +1,5 @@
 .thumb
-.include "_ItemEffectDefinitions.h.s"
+.include "../_ItemEffectDefinitions.h.s"
 
 @arguments:
 	@r0 = proc pointer

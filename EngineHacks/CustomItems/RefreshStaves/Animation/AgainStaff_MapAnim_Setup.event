@@ -1,6 +1,6 @@
 #ifndef RINGGLOW_MAPANIM
 	#define RINGGLOW_MAPANIM
-	//#include "StaffMapAnim\_MapAnim_6CRoutines.event"
+	#include "../../_Staff6C_BasicCases.event"
 	ALIGN 4
 	RingGlow_StaffAnim:
 	

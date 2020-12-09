@@ -9,7 +9,7 @@
 
 //#include "RewarpStaff/_RewarpStaff_Setup.event"
 
-//#include "StealStaff/_StealStaff_Setup.event"
+#include "StealStaff/_StealStaff_Setup.event"
 
 #include "RefreshStaves/_AgainStaff_Setup.event"
 

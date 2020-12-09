@@ -38,6 +38,6 @@
 	rfTrueCheck:
 	SHORT 0x2001 0x4770
 
-	#include "asm/_6C_Basic_Cases/_Staff6C_BasicCases.event"
+	// #include "asm/_6C_Basic_Cases/_Staff6C_BasicCases.event"
 	#include "asm/StaffMapAnim/_MapAnim_6CRoutines.event"
 #endif
