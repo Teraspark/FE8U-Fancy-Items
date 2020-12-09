@@ -54,7 +54,7 @@ rfStaffUsability(Staff_TSUsability, StealStaff_UseCondition, StealStaff_RangeSet
 ALIGN 4
 
 StealStaff_UseCondition:
-#incbin "Usability/IsUnitInventoryFull.dmp"
+#include "Usability/IsUnitInventoryFull.lyn.event"
 ALIGN 4
 
 StealStaff_Targeting: 	//the hard part

@@ -1,5 +1,6 @@
 .thumb
-.include "_TargetSelectionDefinitions.s"
+@ .include "_TargetSelectionDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @arguments:
  @r0 = unit pointer
@@ -10,7 +11,7 @@
  @for holding the item that's about to be stolen
 @return 0 if inventory is full
 push 	{lr}
-_blh Unit_ItemCount
+_blh GetUnitItemCount
 cmp 	r0, #0x5 
 @if you have less than 5 items your inventory is not full
 blo CanHoldMore

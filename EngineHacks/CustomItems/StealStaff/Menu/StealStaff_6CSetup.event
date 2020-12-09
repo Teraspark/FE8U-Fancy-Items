@@ -1,5 +1,5 @@
 ALIGN 4
-#include "_6C_Basic_Cases/_Staff6C_BasicCases.event"
+#include "../../_Staff6C_BasicCases.event"
 
 //list of pointers here
 StealStaff_TargetSelect: //0x59D318 0x59D3B8
@@ -19,26 +19,27 @@ StaffTargetInit(StealStaffHelpText, rsGreen, Staff6C_tsStart2)
 //WORD StealStaffHelpText
 
 StealStaff6C_APress:
-#incbin "StealStaff_APress.dmp"
+#include "StealStaff_APress.lyn.event"
 POIN StealStaff_6CMenu 
 
 StealStaff6C_MenuPortrait:
-#incbin "StealStaff_MenuStart.dmp"
+#include "StealStaff_MenuStart.lyn.event"
 
-MESSAGE "StealStaff OnSwitch" StealStaff6C_OnTargetChange
+// MESSAGE "StealStaff OnSwitch" StealStaff6C_OnTargetChange
 StealStaff6C_OnTargetChange:
-#incbin "_6C_Basic_Cases/tsUpdateOnSwitch.dmp"
+#include "tsUpdateOnSwitch.lyn.event"
 POIN TS6C_ItemMenuUpdate 
 #ifdef StealStaff_TakeWeapons
 	POIN rfTrueCheck
 #else
-	POIN $17054
+	POIN $17054 //vanilla is item stealable routine
 #endif
 
 StealStaff_MenuItemSelect:
-#incbin "StealStaff_MenuItemSelect.dmp"
-WORD 0x855	//text if of message to display if you cannot select item
-MESSAGE "Item Menu " CURRENTOFFSET
+#include "StealStaff_MenuItemSelect.lyn.event"
+//text of message to display if you cannot select item
+WORD 0x855
+// MESSAGE "Item Menu " CURRENTOFFSET
 
 #ifdef StealStaff_TakeWeapons
 	StealStaff_CommandCheck:

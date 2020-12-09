@@ -1,10 +1,14 @@
 .thumb
-.include "_FE8Definitions.h.s"
+@.include "_FE8Definitions.h.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @parameters:
 @r0 = menu 6C pointer
 @r1 = command 6C pointer
-.set ConfirmStaffUse, 0x0802951C
+
+@returns:
+
+@.set ConfirmStaffUse, 0x0802951C
 .equ NAText, OffsetList + 0x0
 
 push {r4-r7,r14}
@@ -17,11 +21,11 @@ cmp 	r0, #0x2	@check if command is unselectable
 bne 	DoThing
 mov 	r0, r6
 ldr 	r1, NAText @message to show if you cannot select command
-_blh 0x0804F580
+_blh MenuCallHelpBox
 mov 	r0, #0x8	@play boop sound
 b 	End
 DoThing:
-ldr 	r1, =pActionStruct
+ldr 	r1, =gActionData
 mov 	r0, r7
 add 	r0, #0x3C
 ldrb 	r0, [r0]
