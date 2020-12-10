@@ -79,17 +79,19 @@
 	@.set GetUnitResistance,                0x08019270
 	@.set GetUnitLuck,                      0x08019298
 	.set GetUnitPortraitId,                 0x080192b8
+	.set GetUnitMovCostTable,               0x08018d4c
+		@arguments: r0 = unit pointer
 	.set CanUnitCrossTerrain,               0x0801949C 
 		@ arguments: r0 = Unit Struct pointer, r1 = Terrain Index;
 		@ returns: r0 = 0 if Unit cannot cross/stand on terrain
 	.set GetUnitRangeMask,                  0x080171E8 
 		@ arguments: r0 = Unit Struct pointer, r1 = Item Slot Index (-1 for all);
 		@ returns: r0 = range mask
+
 	.set CanUnitUseItem,                    0x08028870 
 		@ arguments: r0 = Unit Struct pointer, r1 = Item Short;
 		@ returns = 1 if unit can use item, 0 otherwise
 	.set GetStaffAccuracy,                  0x0802CCDC 	@
-
 	.set GetItemMight,                      0x080175DC 
 		@ arguments: r0 = Item Short
 		@ returns: r0 = Might

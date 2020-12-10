@@ -1,7 +1,6 @@
 ALIGN 4
 
-#include "Freeselect/FreeSelect6C.event"
-#include "_6C_Basic_Cases/_Staff6C_BasicCases.event"
+#include "../../_Staff6C_BasicCases.event"
 
 RewarpStaff_FreeSelect:
 {

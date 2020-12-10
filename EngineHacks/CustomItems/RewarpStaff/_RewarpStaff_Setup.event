@@ -21,7 +21,7 @@
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef RewarpStaffHelpText
@@ -29,13 +29,13 @@
 #endif
 
 //creates the staff's map animation
-#include "ItemProcs/Rewarp_MapAnim_Setup.event"
+#include "Animation/Rewarp_MapAnim_Setup.event"
 ALIGN 4
-#include "ItemProcs/RewarpStaff_6CSetup.event"
+#include "Targeting/RewarpStaff_6CSetup.event"
 ALIGN 4
 
 RewarpStaff_TCondition:
-#incbin "ItemUsability/RewarpStaff_TCondition.dmp"
+#include "Targeting/RewarpStaff_TCondition.lyn.event"
 
 RewarpStaff_RangeSetup:
 rfItemRangeSetup(RewarpStaff_TCondition,Item_TTRange)
@@ -55,6 +55,6 @@ RewarpStaff_UseEffect:
 rfStaffEffect(Staff_UETemplate, Staff_Rewarp)
 ALIGN 4
 Staff_Rewarp:
-#incbin "StaffEffects/RewarpStaff_Effect.dmp"
+#include "Effect/RewarpStaff_Effect.lyn.event"
 
 //AI stuff here
