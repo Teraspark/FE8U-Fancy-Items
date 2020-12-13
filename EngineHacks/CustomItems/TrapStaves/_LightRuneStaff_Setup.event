@@ -21,7 +21,7 @@
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef LightRuneHelpText
@@ -33,13 +33,13 @@
 #endif
 
 //creates the staff's map animation
-#include "ItemProcs/LightRune_MapAnim_Setup.event"
+#include "Animation/LightRune_MapAnim_Setup.event"
 ALIGN 4
-#include "ItemProcs/LightRuneStaff_6CSetup.event"
+#include "Proc/LightRuneStaff_6CSetup.event"
 ALIGN 4
 
 LightRuneStaff_TCondition:
-#incbin "ItemUsability/LightRuneStaff_TCondition.dmp"
+#include "Targeting/LightRuneStaff_TCondition.lyn.event"
 POIN LightRuneTerrainTable
 
 LightRuneStaff_RangeSetup:
@@ -60,6 +60,6 @@ LightRuneStaff_Effect:
 rfStaffEffect(Staff_UETemplate, Staff_LightRuneSummon)
 ALIGN 4
 Staff_LightRuneSummon:
-	#incbin "StaffEffects/LightRuneStaff_Effect.dmp"
+	#include "Effect/LightRuneStaff_Effect.lyn.event"
 
 //AI stuff here

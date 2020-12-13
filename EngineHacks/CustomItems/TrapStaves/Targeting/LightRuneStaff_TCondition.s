@@ -1,9 +1,5 @@
 .thumb
-.set RangeMap, 0x0202E4E4
-.set TerrainMap, 0x0202E4DC
-.set UnitMap, 0x0202E4D8
-.set FindTrapAt, 0x0802E1F0
-.set FindTrapTypeAt, 0x0802E24C
+.include "../../_ItemEffectDefinitions.h.s"
 
 @use movement cost table to check if light rune can spawn the tile's terrain
 .equ MovCostTable, OffsetList + 0x0
@@ -13,7 +9,7 @@ push 	{r4-r6, r14}
 mov 	r4, r0
 mov 	r5, r1
 lsl 	r6, r5, #0x2
-ldr 	r0, =#UnitMap
+ldr 	r0, =gMapUnit
 ldr 	r0, [r0]
 add 	r0, r6, r0
 ldr 	r0,[r0]
@@ -23,13 +19,13 @@ cmp 	r0, #0x0
 bne UnSelectable
 
 mov 	r0, r4
-ldr 	r3, =#FindTrapAt
+ldr 	r3, =GetTrapAt
 mov 	r14, r3
 .short 0xF800
 cmp 	r0, #0x0
 bne UnSelectable
 
-ldr 	r0, =#TerrainMap
+ldr 	r0, =gMapTerrain
 ldr 	r0, [r0]
 ldr 	r1, MovCostTable
 add 	r0, r6, r0
@@ -42,7 +38,7 @@ cmp 	r0, r1
 bne 	End
 @deselect the tile since the light rune cannot spawn here
 UnSelectable:
-ldr 	r0, =#RangeMap
+ldr 	r0, =gMapRange
 ldr 	r1, [r0]
 add 	r0, r1, r6
 ldr 	r0, [r0]

@@ -21,7 +21,7 @@
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef BallistaStaffHelpText
@@ -33,13 +33,13 @@
 #endif
 
 //creates the staff's map animation
-#include "ItemProcs/LightRune_MapAnim_Setup.event"
+#include "Animation/LightRune_MapAnim_Setup.event"
 ALIGN 4
-#include "ItemProcs/BallistaStaff_6CSetup.event"
+#include "Proc/BallistaStaff_6CSetup.event"
 ALIGN 4
 
 BallistaStaff_TCondition:
-	#incbin "ItemUsability/BallistaStaff_TCondition.dmp"
+	#include "Targeting/BallistaStaff_TCondition.lyn.event"
 	POIN BallistaTerrainTable
 
 BallistaStaff_RangeSetup:
@@ -67,12 +67,12 @@ rfStaffEffect(Staff_UETemplate, Staff_BallistaSummon)
 */
 ALIGN 4
 Staff_BallistaSummon:
-	#incbin "StaffEffects/BallistaStaff_Effect.dmp"
+	#include "Effect/BallistaStaff_Effect.lyn.event"
 
 //AI stuff here
-ALIGN 4
 Staff_Ballista_AI:
-StaffAI_TUnits(AIC_BallistaStaff)
+// ALIGN 4
+// StaffAI_TUnits(AIC_BallistaStaff)
 
-AIC_BallistaStaff:
-#incbin "StaffAI/BallistaStaff_AIC.dmp"
+// AIC_BallistaStaff:
+// #incbin "StaffAI/BallistaStaff_AIC.dmp"

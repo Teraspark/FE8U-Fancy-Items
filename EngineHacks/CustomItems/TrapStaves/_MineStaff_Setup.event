@@ -17,11 +17,11 @@
 	SetIEPointer((MineStaffItemID - 0x4B), MineStaff_Effect)
 
 	//Set staff AI so that staff can be used by NPCs
-	SetStaffAI(0x2, MineStaffItemID, Staff_Mine_AI | 1)
+	// SetStaffAI(0x2, MineStaffItemID, Staff_Mine_AI | 1)
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef MineHelpText
@@ -32,20 +32,19 @@
 	#define MineTerrainTable 0x80B90C 
 #endif
 
+//creates the staff's map animation
+#include "Animation/Mine_MapAnim_Setup.event"
+ALIGN 4
+#include "Proc/MineStaff_6CSetup.event" //fix this later
+ALIGN 4
+
 MineStaff_TCondition:
-	#incbin "ItemUsability/LightRuneStaff_TCondition.dmp"
+	#include "Targeting/LightRuneStaff_TCondition.lyn.event"
 	POIN MineTerrainTable
 
 MineStaff_RangeSetup:
 	rfItemRangeSetup(MineStaff_TCondition, Item_TTRange)
 	
-ALIGN 4
-#include "ItemProcs/MineStaff_6CSetup.event" //fix this later
-ALIGN 4
-//creates the staff's map animation
-#include "ItemProcs/Mine_MapAnim_Setup.event"
-ALIGN 4
-
 MineStaff_Usability:
 	rfStaffUsability(Staff_FSUsability, rfTrueCheck, rfTrueCheck)
 
@@ -57,18 +56,18 @@ MineStaff_Effect:
 	rfStaffEffect(Staff_UETemplate, Staff_CreateMine)
 ALIGN 4
 Staff_CreateMine:
-#incbin "StaffEffects/MineStaff_Effect.dmp"
+	#include "Effect/MineStaff_Effect.lyn.event"
 
 //AI stuff here
-#include "_TerrainIDList.event"
-Staff_Mine_AI:
+// #include "../_TerrainIDList.event"
+// Staff_Mine_AI:
 
-StaffAI_TTiles(AIC_MineStaff)
+// StaffAI_TTiles(AIC_MineStaff)
 
-AIC_MineStaff:	//Ai Targeting condition
-#incbin "StaffAI/MineStaff_AIC.dmp"
-POIN MineAI_TerrainList
+// AIC_MineStaff:	//Ai Targeting condition
+// #incbin "StaffAI/MineStaff_AIC.dmp"
+// POIN MineAI_TerrainList
 
-MineAI_TerrainList:
-BYTE _tThrone _tChest _tPillar _tStairs 0x0
-ALIGN 4
+// MineAI_TerrainList:
+// BYTE _tThrone _tChest _tPillar _tStairs 0x0
+// ALIGN 4
