@@ -1,5 +1,6 @@
 .thumb
-.include "_ItemEffectDefinitions.s"
+@ .include "_ItemEffectDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @add check for event ids
 .equ ChestCashEvent, OffsetList + 0x0
@@ -8,7 +9,7 @@
 push 	{r4-r7,lr}
 @mov 	r4, r0
 @mov 	r5, r1
-ldr 	r3, =ActionStruct
+ldr 	r3, =gActionData
 mov 	r0, #0x13
 ldsb 	r4, [r3, r0]
 mov 	r0, #0x14
@@ -17,7 +18,7 @@ ldr 	r7, memoryslots
 mov 	r0, #0x3
 lsl 	r0, r0, #0x2
 add 	r7, r0
-ldr 	r0, =ChapterDataStruct
+ldr 	r0, =gChapterData
 ldrb 	r0, [r0, #0xE]
 _blh #0x80346B0 @return pointer to chapter events
 ldr 	r6, [r0, #0x8]
@@ -34,7 +35,7 @@ bne reloop
 cmp 	r1, r5
 bne reloop
 ldrh 	r0, [r6, #0x2]	@check if event id is untriggered
-_blh 	#0x8083DA8
+_blh 	CheckEventID
 cmp 	r0, #0x0
 bne reloop
 EventType:
@@ -83,10 +84,10 @@ cmp 	r0, #0x0
 beq End
 mov 	r7, r0
 ldrh 	r0, [r7, #0x2]
-_blh #0x8083D80	@set event id for event
+_blh SetEventID	@set event id for event
 mov 	r0, r7
 mov 	r1, #0x1
-_blh #0x800D07C 	@event engine thing
+_blh CallMapEventEngine 	@event engine thing
 End:
 pop 	{r4-r7}
 pop 	{r3}

@@ -1,12 +1,12 @@
-#include "FreeSelect/_6CDefinitions.event"
+// #include "FreeSelect/_6CDefinitions.event"
 //REDO WHOLE THING
 #ifndef UNLOCK_MAPANIM
 	#define UNLOCK_MAPANIM
 {
 	
-	Unlock_FadingTileChange:
-	#incbin "StaffMapAnim\UnlockStaff_TileChange.dmp"
-	POIN TargetTile_TileChange //ASRewardFromChestAt
+	// Unlock_FadingTileChange:
+	// #incbin "UnlockStaff_TileChange.dmp"
+	// POIN TargetTile_TileChange //ASRewardFromChestAt
 	
 	ALIGN 4
 	PUSH

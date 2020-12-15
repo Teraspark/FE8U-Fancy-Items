@@ -193,6 +193,12 @@
 	.set AddBallista,                       0x08037A04
 	.set IsBallista,                        0x08037AA8
 	
+@Event Related Routines
+	.set CallMapEventEngine,                0x0800d07c
+	.set SetEventID,                        0x08083d80
+	.set UnsetEventID,                      0x08083d94 
+	.set CheckEventID,                      0x08083DA8
+	
 @Other
 	.set ClearIcons,                        0x08003584 
 	.set LoadIconPalettes,                  0x080035BC 

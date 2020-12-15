@@ -41,4 +41,8 @@
 	TargetTile_TileChange:
 	#incbin "TileChange.dmp"
 
+	Unlock_FadingTileChange:
+	#include "UnlockStaff_TileChange.lyn.event"
+	POIN TargetTile_TileChange
+	
 #endif

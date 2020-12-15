@@ -21,24 +21,24 @@
 	POP
 #endif
 
-#include "_StaffTemplates.event"
+#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef BurglarStaffHelpText
 	#define BurglarStaffHelpText 0x881 //placeholder text id
 #endif
 
+ALIGN 4
+#include "Targeting/BurglarStaff_6CSetup.event"
+ALIGN 4
+#include "Animation/BurglarStaff_MapAnim_Setup.event"
+ALIGN 4
+
 BurglarStaff_TCondition:
-	#incbin "ItemUsability/BurglarStaff_TCondition.dmp"
+	#include "Targeting/BurglarStaff_TCondition.lyn.event"
 	
 BurglarStaff_RangeSetup:
 	rfItemRangeSetup(BurglarStaff_TCondition, Item_TTRange)
-
-ALIGN 4
-#include "ItemProcs/BurglarStaff_6CSetup.event"
-ALIGN 4
-#include "ItemProcs/BurglarStaff_MapAnim_Setup.event"
-ALIGN 4
 
 BurglarStaff_Usability:
 	rfStaffUsability(Staff_TSUsability, rfTrueCheck, BurglarStaff_RangeSetup)
@@ -50,7 +50,7 @@ BurglarStaff_Effect:
 	rfStaffEffect(Staff_UETemplate, BurglarStaff_Unlock)
 	
 BurglarStaff_Unlock:
-	#incbin "StaffEffects/BurglarStaff_Effect.dmp"
+	#include "Effect/BurglarStaff_Effect.lyn.event"
 	POIN Unlock_ChestEvent //ASRewardFromChestAt
 	ALIGN 4
 
@@ -66,7 +66,7 @@ BurglarStaff_Unlock:
 	_6C_END
 
 ASRewardFromChestAt:
-#incbin "StaffEffects/GiveItemFromChestAt.dmp"
+#include "Effect/GiveItemFromChestAt.lyn.event"
 POIN ASGiveCashEvent ASGiveItemEvent
 
 ALIGN 4
