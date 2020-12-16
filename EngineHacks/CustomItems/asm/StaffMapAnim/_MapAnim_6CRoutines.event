@@ -5,33 +5,33 @@
 	
 //Camera Positioning
 	TargetTileFocus:
-	#incbin "TargetTile_Focus.dmp"
+	#include "TargetTile_Focus.lyn.event"
 	
 	LightRuneAnim_TileFocus:
-	#incbin "TargetTile_AnimFocus.dmp"
+	#include "TargetTile_AnimFocus.lyn.event"
 	POIN LightRune_AnimPosition | 1
 	
 	MineAnim_TargetTileFocus:
-	#incbin "TargetTile_AnimFocus.dmp"
+	#include "TargetTile_AnimFocus.lyn.event"
 	POIN 0x8022300 | 1
 	
 	//focus camera on where unit will be after action
 	BattleActingUnit_DestFocus:
-	#incbin "BActingUnit_Focus.dmp"
+	#include "BActingUnit_Focus.lyn.event"
 
 	BattleTargetUnit_DestFocus:
-	#incbin "BTargetUnit_Focus.dmp"
+	#include "BTargetUnit_Focus.lyn.event"
 	
 //Animation Positioning
 	AnimBG0_UnitFocus:
-	#incbin "APUnit_Focus.dmp"
+	#include "APUnit_Focus.lyn.event"
 	POIN SetAnimPosition_BG0
 	
 	SetAnimPosition_BG0:
-	#incbin "SetAnimPositionBG0.dmp"
+	#include "SetAnimPositionBG0.lyn.event"
 	
 	LightRune_AnimPosition:
-	#incbin "LightRune_AnimPositionSet.dmp"
+	#include "LightRune_AnimPositionSet.lyn.event"
 
 	RingGlow_TargetUnitFocus:
 	#include "RingGlowAnimFocus_TargetUnit.lyn.event"
@@ -39,7 +39,7 @@
 
 //Tile changes
 	TargetTile_TileChange:
-	#incbin "TileChange.dmp"
+	#include "TileChange.lyn.event"
 
 	Unlock_FadingTileChange:
 	#include "UnlockStaff_TileChange.lyn.event"

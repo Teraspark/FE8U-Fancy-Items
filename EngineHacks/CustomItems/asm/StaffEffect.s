@@ -28,8 +28,8 @@ skipDefender:
 @the actual item effect
 mov 	r0, r6
 _blr r5
-mov 	r14, r5
-.short 0xf800
+@ mov 	r14, r5
+@ .short 0xf800
 
 @update exp and item durability
 mov 	r0, r6

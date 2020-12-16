@@ -1,5 +1,6 @@
 .thumb
-.include "../_FE8Definitions.h.s"
+@ .include "../_FE8Definitions.h.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @Anim positioning for bg0?
 
@@ -16,7 +17,7 @@ mov 	r6, r2
 mov 	r7, r3
 
 lsl 	r0, r4, #0x4
-ldr 	r2, =pGameDataStruct
+ldr 	r2, =gGameState
 mov 	r3, #0xC
 ldsh 	r1, [r2, r3]
 sub 	r0, r0, r1
@@ -35,7 +36,7 @@ neg 	r2, r5
 lsl 	r2, r2, #0x10
 lsr 	r2, r2, #0x10
 mov 	r0, #0x0
-_blh 	BG_SetPosition
+_blh 	SetBgPosition
 @ldr 	r3, StorePlace 		@store location of where light run animation will play
 @mov 	r14, r3
 .short 0xF800

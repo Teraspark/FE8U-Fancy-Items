@@ -1,6 +1,5 @@
 .thumb 
-.include "../_TargetSelectionDefinitions.s"
-.set Item_GetUsesLeft, 0x08017584
+.include "../../_ItemEffectDefinitions.h.s"
 
 push {r4-r7, lr}
 mov 	r7, r10
@@ -10,11 +9,11 @@ push 	{r5-r7}
 add 	sp, #-0x24
 str 	r0, [sp, #0x8]
 str 	r1, [sp, #0x20]
-_blh 	Unit_GetItemCount
+_blh 	GetUnitItemCount
 str 	r0, [sp, #0xC]
 ldr 	r0, [sp, #0x8]
 mov 	r1, #0xD
-_blh 	0x080349D4
+_blh 	GetUnitInfoWindowX
 str 	r0, [sp, #0x10]
 mov 	r0, #0xD
 str 	r0, [sp]
@@ -24,7 +23,7 @@ mov 	r0, #0x0
 ldr 	r1, [sp, #0x8]
 ldr 	r2, [sp, #0x10]
 mov 	r3, #0x0
-_blh 	0x0803483C, r4
+_blh 	UnitInfoWindow_DrawBase, r4
 mov 	r1, #0x0
 mov 	r10, r1
 ldr 	r1, [sp, #0xC]
@@ -52,7 +51,7 @@ ldr 	r3, [sp, #0x20]
 _blr 	r3
 mov 	r4, r0
 mov 	r0, r7
-_blh 	0x8003DC8
+_blh 	Text_Clear
 mov 	r1, #0x0
 lsl 	r4, r4, #0x18
 asr 	r4, r4, #0x18
@@ -62,19 +61,19 @@ bne 	Skip1
 mov 	r1, #0x1
 Skip1:
 mov 	r0, r7
-_blh 	0x8003E60
+_blh 	Text_SetColorID
 mov 	r0, r6
-_blh 	0x80174F4
+_blh 	GetItemNameString
 mov 	r1, r0
 mov 	r0, r7
-_blh 	0x8004004
+_blh 	Text_DrawString
 ldr 	r0, [sp, #0x18]
 lsl 	r1, r0, #0x1
-ldr 	r0, =pBG0TileMap
+ldr 	r0, =gBg0MapBuffer
 mov 	r8, r0
 add 	r1, r8
 mov 	r0, r7
-_blh 0x8003E70
+_blh Text_Display
 ldr 	r1, [sp, #0x14]
 lsl 	r0, r1, #0x1
 mov 	r1, r8
@@ -86,11 +85,11 @@ beq 	Skip2
 mov 	r5, #0x2
 Skip2:
 mov 	r0, r6
-_blh 	0x08017584
+_blh 	GetItemUses
 mov 	r2, r0
 mov 	r0, r4
 mov 	r1, r5
-_blh 	0x8004B94
+_blh 	DrawUiNumberOrDoubleDashes
 ldr 	r4, [sp, #0x1C]
 add 	r4, #0x1
 ldr 	r1, [sp, #0x10]
@@ -98,12 +97,12 @@ add 	r4, r4, r1
 lsl 	r4, r4, #0x1
 add 	r4, r8
 mov 	r0, r6
-_blh 0x8017700
+_blh GetItemIconId
 mov 	r1, r0
 mov 	r0, r4
 mov 	r2, #0x80
 lsl 	r2, r2, #0x7
-_blh 0x80036BC
+_blh DrawIcon
 ldr 	r0, [sp, #0x14]
 add 	r0, #0x40
 str 	r0, [sp, #0x14]

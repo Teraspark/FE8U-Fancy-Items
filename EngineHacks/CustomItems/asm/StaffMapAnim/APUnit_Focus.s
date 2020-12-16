@@ -1,5 +1,6 @@
 .thumb
-.include "../_FE8Definitions.h.s"
+@ .include "../_FE8Definitions.h.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @r0 has unit pointer
 @r1 has displacement x

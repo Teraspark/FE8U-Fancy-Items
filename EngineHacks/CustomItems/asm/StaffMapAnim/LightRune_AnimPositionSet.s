@@ -1,4 +1,5 @@
 .thumb
+.include "../../_ItemEffectDefinitions.h.s"
 
 AnimCoordinates:
 @r0 has 6C pointer?
@@ -10,7 +11,7 @@ mov 	r4, r1
 mov 	r5, r2
 
 lsl 	r0, r4, #0x4
-ldr 	r2, RAMplace
+ldr 	r2, =gGameState
 mov 	r3, #0xC
 ldsh 	r1, [r2, r3]
 sub 	r0, r0, r1
@@ -29,9 +30,10 @@ neg 	r2, r5
 lsl 	r2, r2, #0x10
 lsr 	r2, r2, #0x10
 mov 	r0, #0x0
-ldr 	r3, StorePlace 		@store location of where light run animation will play
-mov 	r14, r3
-.short 0xF800
+_blh SetBgPosition
+@ ldr 	r3, StorePlace 		@store location of where light run animation will play
+@ mov 	r14, r3
+@ .short 0xF800
 
 pop 	{r4-r6}
 pop 	{r3}
@@ -39,7 +41,3 @@ bx 		r3
 
 .ltorg
 .align
-RAMplace:
-.long 0x202BCB0
-StorePlace:
-.long 0x800148C

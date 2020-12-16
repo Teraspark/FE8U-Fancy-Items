@@ -1,5 +1,5 @@
 .thumb
-.include "../_TargetSelectionDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 @A button case
 
 .equ ActionID, 0x03
@@ -8,7 +8,7 @@ push 	{r4, r14}
 mov 	 r4, r0
 
 @check to make sure tile is selectable
-ldr 	r0, =ppRangeMapRows
+ldr 	r0, =gMapRange
 lsl 	r3, r2, #0x2
 ldr 	r0, [r0]
 ldr 	r0, [r0, r3]
@@ -18,7 +18,7 @@ cmp 	r0, #0
 beq BadTile
 
 @store cooridinates in action struct
-ldr 	r0, =pActionStruct
+ldr 	r0, =gActionData
 mov 	r3, #0x0
 strb 	r3, [r0, #0xD]
 mov 	r3, #ActionID

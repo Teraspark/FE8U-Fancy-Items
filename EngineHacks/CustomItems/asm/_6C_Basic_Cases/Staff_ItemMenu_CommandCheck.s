@@ -1,5 +1,5 @@
 .thumb
-.include "../_TargetSelectionDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @arguments:
 	@r0 = Pointer to Command definition
@@ -8,7 +8,7 @@
 push 	{r4-r5, lr}
 mov 	r4, r1
 mov 	r5, r2
-ldr 	r0, =pActionStruct
+ldr 	r0, =gActionData
 ldrb 	r0, [r0, #0xD]
 _blh GetUnit
 mov 	r2, r0

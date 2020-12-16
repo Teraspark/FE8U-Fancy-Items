@@ -1,14 +1,14 @@
 .thumb
-.set ActionStruct, 0x203A958
+.include "../../_ItemEffectDefinitions.h.s"
 
 push {r4,r14}
 mov 	r4, r0
 
-ldr 	r3, =ActionStruct
+ldr 	r3, =gActionData
 ldrb 	r1, [r3, #0x13]
 ldrb 	r2, [r3, #0x14]
 
-ldr 	r3, SetLightRuneAnimPosition
+ldr 	r3, SetAnimPosition
 bl	BX_R3
 
 pop 	{r4}
@@ -19,4 +19,4 @@ bx	r3
 .ltorg
 .align
 
-SetLightRuneAnimPosition:
+SetAnimPosition:

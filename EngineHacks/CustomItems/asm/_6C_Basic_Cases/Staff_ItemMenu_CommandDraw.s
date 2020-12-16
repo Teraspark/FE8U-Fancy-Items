@@ -1,5 +1,5 @@
 .thumb
-.include "../_TargetSelectionDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 @thing for drawing menu commands
 @arguments:
@@ -9,7 +9,7 @@
 push 	{r4-r6, lr}
 mov 	r5, r1
 mov 	r6, r2
-ldr 	r0, =pActionStruct
+ldr 	r0, =gActionData
 ldrb 	r0, [r0, #0xD]
 _blh GetUnit
 mov 	r1, r5
@@ -31,12 +31,10 @@ mov 	r6, #0x2A
 ldsh 	r1, [r5, r6]
 add 	r3, r3, r1
 lsl 	r3, r3, #0x1
-ldr 	r1, =pBG0TileMap
+ldr 	r1, =gBg0MapBuffer
 add 	r3, r3, r1
-ldr 	r1, =0x8016848
-mov 	lr, r1
 mov 	r1, r4
-.short 0xF800
+_blh DrawItemMenuCommand, r4
 pop 	{r4-r6}
 pop 	{r1}
 bx 	r1

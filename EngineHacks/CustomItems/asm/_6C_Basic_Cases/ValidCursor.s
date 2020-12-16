@@ -1,10 +1,10 @@
 .thumb
-.include "../_TargetSelectionDefinitions.s"
+.include "../../_ItemEffectDefinitions.h.s"
 
 push 	{r4, lr}
 mov 	r4, r0
-ldr 	r3, =pGameDataStruct
-ldr 	r2, =ppRangeMapRows
+ldr 	r3, =gGameState
+ldr 	r2, =gMapRange
 ldr 	r2, [r2]
 ldrh 	r0, [r3, #0x16]
 lsl 	r0, #0x2
