@@ -61,4 +61,5 @@ Select door or chest to open[X]
 Again[X]
 
 ##AgainStaffDesc
-Allow an ally to move again.[X]
+Allow an ally to
+[NL] move again.[X]
