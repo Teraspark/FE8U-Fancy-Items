@@ -11,22 +11,26 @@
 
 ALIGN 4
 #ifdef _FE8_
-	MigVul_Effect:
-{
-	//#include "_6CDefinitions.event"
-	//#define rfStaffEffect(routine, pointer) "SHORT 0x1C30 0x4903; BL(routine); jumpToHack(0x2FF76); POIN (pointer | 1)"
-	//rfStaffEffect(Item_UETemplate, MigVul_Healing)
-	
 	#include "SelfHealingItems_Setup.event"
 	
-	MigVul_Healing:
-	SelfHealing_Effect(Heal10HP|1)
+	#ifndef ItemEffectRevamp
+		#define MigVulItemID 0x6C
+		PUSH
+		SetIUPointer((MigVulItemID - 0x4B),$8028b60)
+		SetITPointer((MigVulItemID - 0x4B),ITNull)
+		SetIEPointer((MigVulItemID - 0x4B),MigVul_Effect)
+		POP
+	#endif
 	
-	ALIGN 4
-	Item_UETemplate:
-		#incbin "ItemEffect.dmp"
-	Heal10HP:
-	SHORT 0x200A 0x4770
+	MigVul_Effect:
+{
+	rfStaffEffect(Staff_UETemplate, MigVul_Healing)
+	
+	MigVul_Healing:
+	SelfHealing_Effect(HealCalc_ItemMight|1)
+	
+	HealCalc_ItemMight:
+	#include "HealFormulas/HealCalc_ItemMight.lyn.event"
 	
 	ALIGN 4
 	

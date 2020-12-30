@@ -18,12 +18,11 @@
 	ALIGN 4
 	//plays whatever animation is set for item 0x6C (vulnerary)
 	SelfHealingItem:
-		#incbin "SelfHealing.dmp"
+		#include "SelfHealing.lyn.event"
 	
-	#define SelfHealing_Effect(healcalc) "SHORT 0x4902 0x4A03; jumpToHack(SelfHealingItem); POIN healcalc"
+	#define SelfHealing_Effect(healcalc) "ALIGN 4; SHORT 0x4902 0; jumpToHack(SelfHealingItem); POIN healcalc"
 	
-	HealCalc_ItemMight:
-		#incbin "HealCalc_ItemMight.dmp"
+	Heal10HP:
+	SHORT 0x200A 0x4770
 	
-	MESSAGE CURRENTOFFSET "place"
 #endif

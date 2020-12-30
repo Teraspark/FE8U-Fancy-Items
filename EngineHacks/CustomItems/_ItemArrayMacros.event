@@ -6,11 +6,11 @@
 	//Table Offsets
 	//Comment out definitions if moving tables INLINE
 	#ifdef _FE8_
-		#ifndef PromoTable
-			#define PromoTable 0x2921C //Promotion Item Usability Jump Table
-		#endif
-		
 		#ifndef ItemEffectRevamp
+			#ifndef PromoTable
+				#define PromoTable 0x2921C //Promotion Item Usability Jump Table
+			#endif
+		
 			///* these tables are removed in item effect revamp
 			//comment these out if you're using nmm2csv tables for them instead
 			#ifndef	IUArray

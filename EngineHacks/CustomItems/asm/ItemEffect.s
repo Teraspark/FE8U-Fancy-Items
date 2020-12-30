@@ -26,9 +26,10 @@ _blh SetupTargetUnitForStaff
 skipDefender:
 
 @update exp and item durability
-mov 	r0, r6
-ldr 	r3, Expthing
-bl		jump 		@give exp to units and handle level ups
+@ mov 	r0, r6
+@ _blh FinishUpItemBattle
+@ ldr 	r3, Expthing
+@ bl		jump 		@give exp to units and handle level ups
 
 @the actual item effect
 mov 	r0, r6
@@ -36,6 +37,10 @@ mov 	r3, r5
 bl		jump
 @mov 	r14, r5
 @.short 0xf800
+
+@removed since items should be able to
+	@have hardcoded animations
+@_blh BeginBattleAnimations
 
 pop  	{r4-r6}
 pop  	{r0}
@@ -46,7 +51,3 @@ bx r3
 
 .ltorg
 .align
-Expthing:
-.long 0x802CC54 | 1
-@ItemGraphics: @removed since items should be able to have hardcoded animations
-@.long 0x802CA14 | 1

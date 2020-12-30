@@ -33,21 +33,15 @@ _blr r5
 
 @update exp and item durability
 mov 	r0, r6
-ldr 	r3, Expthing
-bl		jump 		@give exp to units and handle level ups
-ldr 	r3, ItemGraphics
-bl		jump		@seems to handle setting up spell animation and other graphics
+_blh FinishUpItemBattle
+_blh BeginBattleAnimations
 
 pop  	{r4-r6}
 pop  	{r0}
 bx  	r0
 
-jump:
-bx r3
+@ jump:
+@ bx r3
 
 .ltorg
 .align
-Expthing:
-.long 0x802CC54 | 1
-ItemGraphics:
-.long 0x802CA14 | 1

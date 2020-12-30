@@ -32,6 +32,8 @@
 	.set gUnitSubject,                      0x02033F3C 		
 	.set gActiveBattleUnit,                 0x0203A4EC @attacker
 	.set gTargetBattleUnit,                 0x0203A56C @defender
+	.set gRoundArray,                       0x0203A5EC
+	.set gpCurrentRound,                    0x0203A608
 	.set gActiveUnit,                       0x03004E50 		
 
 	.set gTargetPosition,                   0x0203DDE8 		
@@ -278,3 +280,7 @@
 		@writes action 0x3 (using a staff) to ActionStruct
 		@also removes range squares and clears BG2
 		@arguments: none
+	.set BeginBattleAnimations,             0x0802CA14
+	.set FinishUpItemBattle,                0x0802CC54
+	.set UnitTryHeal,                       0x080193A4
+		@arguments: r0 = unit pointer, r1 = amount to heal
