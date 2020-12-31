@@ -1,13 +1,21 @@
 .thumb
+.include "../../StaffAI/_ItemAIDefinitions.h.s"
 
-.include "_ItemAIDefinitions.s"
-@parameters: r0 = stack pocket pointer, r1= active unit, r2= target unit
+@arguments: 
+	@ r0 = stack pocket pointer
+	@ r1= active unit
+	@ r2= target unit
+	
+@returns:
+	@ r0 = check _ItemAIDefinitions.h.s for return values
+	
 	push 	{r4-r6, lr}
 	mov 	r4, r2
 	mov 	r5, r1
 	mov 	r6, r0
 	
-	_bldr 	r3, AIAllegianceCheck
+	mov 	r0, r4
+	_blh IsUnitEnemyWithActiveUnit
 	
 	cmp r0, #0x0
 	bne CantUse
@@ -26,7 +34,7 @@
 	ldrb 	r0, [r4, #0x10]
 	ldrb 	r1, [r4, #0x11]
 	mov 	r2, #0x1
-	_bldr 	r3, FindTrapType
+	_blh GetSpecificTrapAt
 	cmp 	r0, #0x0
 	bne CantUse
 	mov 	r0, #0x1

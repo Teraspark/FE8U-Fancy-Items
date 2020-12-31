@@ -14,18 +14,23 @@
 
 @Stack pocket values for the new staff ai routines
 	@the size of the stack pocket
-	.set spSize,            0x30
+	.set spSize,             0x30
 	@0x0 is for passing arguments
 	@0x4 and 0x8 seem to only be used in the unused
 		@ warp ai so i don't use them just in case
-	.set spItemSlot,        0x0C
-	.set spItemRange,       0x10
-	.set spDestination,     0x14
-	.set spTargetTile,      0x18
-	.set spTargetUnit,      0x1C
-	.set spPriority,        0x20
-	.set spNewDestination,  0x24
-	.set spNewPriority,     0x28
+	.set spItemSlot,         0x0C
+	.set spItemRange,        0x10
+	.set spDestination,      0x14
+	.set spTargetTile,       0x18
+	.set spTargetUnit,       0x1C
+	.set spPriority,         0x20
+	.set spNewDestination,   0x24
+	.set spNewPriority,      0x28
+@Return Values for AICondition routines
+	@turn these into .set values later
+	@0x1	update current target to the new target
+	@0x2	update current priority to new priority
+	@0x8	forcibly end target selection loop
 
 @Relevant Ram Offsets
 .set gActionData,                 0x0203A958
@@ -43,7 +48,7 @@
 .set gMapMovement2,               0x0202E4F0 	
 
 @Routines
-	@character info routines
+@character info routines
 	.set GetUnit,                      0x08019430
 		@ arguments:
 			@r0 = unit deployment id
@@ -70,14 +75,24 @@
 		@ arguments: r0 = Unit Struct pointer, r1 = Terrain Index;
 		@ returns: r0 = 0 if Unit cannot cross/stand on terrain
 	
-	.set AreAllegiancesAllied,          0x08024D8C
+	.set AreAllegiancesAllied,         0x08024D8C
 	.set IsUnitEnemyWithActiveUnit,    0x0803C818
 	
-	@Trap related routines
+@Trap Related Routines
 	.set GetTrapAt,                    0x0802E1F0
 	.set GetSpecificTrapAt,            0x0802E24C
+	.set AddTrap,                      0x0802E2B8
+	.set AddTrapExt,                   0x0802E2E0
+	.set RemoveTrap,                   0x0802E2FC
+	.set AddLightRune,                 0x0802EA58
+	.set RemoveLightRune,              0x0802EA90
+	.set GetBallistaItemAt,            0x0803798C
+		@ arguments: r0 = x, r1 = y;
+		@ returns: ballista item at (x, y) (0 if none)
+	.set AddBallista,                  0x08037A04
+	.set IsBallista,                   0x08037AA8
 	
-	@Range and Move Cost Maps Routines
+@Range and Move Cost Maps Routines
 	.set SetupMapRowPointers,          0x080197E4
 	.set MapAddInRange,                0x0801AABC
 	.set MapSetInMagicSealedRange,     0x0801B950
@@ -100,12 +115,12 @@
 			@r2 = action id
 			@r3 = unit id of target
 			@[sp] = item slot number
-	.set AiTryMoveTowards,              0x0803BA08
+	.set AiTryMoveTowards,             0x0803BA08
 	.set AiFindTargetingPosition,      0x0803C284
 		@arguments:
 			@r0= pointer for where to store position coordinates
 	
-	@Other Routines
+@Other Routines
 	.set Div,                          0x080D167C
 	.set GetCurrentPhase,              0x08024DBC
 	.set GetStaffAccuracy,             0x0802CCDC

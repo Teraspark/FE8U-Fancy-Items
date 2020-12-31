@@ -1,15 +1,14 @@
 .thumb
-.set RangeMap, 0x0202E4E4
-.set TerrainMap, 0x0202E4DC
-.set UnitMap, 0x0202E4D8
-
-.set FindTrapTypeAt, 0x0802E24C
+.include "../../StaffAI/_ItemAIDefinitions.h.s"
 
 .equ TerrainList, OffsetList + 0x0
 @arguments:
 	@r0 = stack pocket pointer
 	@r1 = active unit pointer
 	@r2 = x of tile; r3 = y of tile
+	
+@returns:
+	@ r0 = check _ItemAIDefinitions.h.s for return values
 	
 push 	{r4-r7,lr}
 mov 	r4, r1
@@ -20,13 +19,13 @@ mov 	r7, r0
 mov 	r0, r5
 mov 	r1, r6
 mov 	r2, #0xB
-ldr 	r3, =#FindTrapTypeAt
+ldr 	r3, =GetSpecificTrapAt
 mov 	lr, r3
 .short 0xF800
 cmp 	r0, #0x0
 bne UnSelectable
 
-ldr 	r3, =#TerrainMap
+ldr 	r3, =gMapTerrain
 ldr 	r3, [r3]
 lsl 	r2, r6, #0x2
 add 	r1, r3, r2

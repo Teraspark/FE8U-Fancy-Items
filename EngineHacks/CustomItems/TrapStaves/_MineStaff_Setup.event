@@ -17,7 +17,7 @@
 	SetIEPointer((MineStaffItemID - 0x4B), MineStaff_Effect)
 
 	//Set staff AI so that staff can be used by NPCs
-	// SetStaffAI(0x2, MineStaffItemID, Staff_Mine_AI | 1)
+	SetStaffAI(0x2, MineStaffItemID, Staff_Mine_AI | 1)
 	POP
 #endif
 
@@ -59,15 +59,15 @@ Staff_CreateMine:
 	#include "Effect/MineStaff_Effect.lyn.event"
 
 //AI stuff here
-// #include "../_TerrainIDList.event"
-// Staff_Mine_AI:
+#include "../_TerrainIDList.event"
+Staff_Mine_AI:
 
-// StaffAI_TTiles(AIC_MineStaff)
+StaffAI_TTiles(AIC_MineStaff)
 
-// AIC_MineStaff:	//Ai Targeting condition
-// #incbin "StaffAI/MineStaff_AIC.dmp"
-// POIN MineAI_TerrainList
+AIC_MineStaff:	//Ai Targeting condition
+#include "StaffAI/MineStaff_AIC.lyn.event"
+POIN MineAI_TerrainList
 
-// MineAI_TerrainList:
-// BYTE _tThrone _tChest _tPillar _tStairs 0x0
-// ALIGN 4
+MineAI_TerrainList:
+BYTE _tThrone _tChest _tPillar _tStairs 0x0
+ALIGN 4
