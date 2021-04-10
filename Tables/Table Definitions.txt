@@ -94,6 +94,19 @@
   #define UnlockLock4 0x80
 #endif
 
+//Status Effects
+#define NoStatusID 0
+#define PoisonStatusID 1
+#define SleepStatusID 2
+#define SilenceStatusID 3
+#define BerserkStatusID 4
+#define AtkRingStatusID 5
+#define DefRingStatusID 6
+#define CritRingStatusID 7
+#define AvoRingStatusID 8
+#define SickStatusID 9
+#define PetrifyStatusID 13
+
 //Custom definitions go here:
   #define GBAPOIN(label) "label | 0x8000000"
   //#define ClassTable 0x807110
