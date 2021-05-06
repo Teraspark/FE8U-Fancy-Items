@@ -54,6 +54,8 @@ BurglarStaff_Unlock:
 	POIN Unlock_ChestEvent //ASRewardFromChestAt
 	ALIGN 4
 
+#include "EAstdlib.event"
+
 //Event Stuff
 	
 	Unlock_ChestEvent:
