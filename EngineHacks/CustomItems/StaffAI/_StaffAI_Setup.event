@@ -38,12 +38,12 @@
 	ALIGN 4
 	StaffAI_TargetUnits:
 	#include "StaffAI_TargetUnits.lyn.event"
-	POIN MovGetter|1 GetItemRange|1
+	POIN prGotoMovGetter|1 GetItemRange|1
 	
 	ALIGN 4
 	StaffAI_TargetTiles:
 	#include "StaffAI_TargetTiles.lyn.event"
-	POIN MovGetter|1 GetItemRange|1
+	POIN prGotoMovGetter|1 GetItemRange|1
 	
 	ALIGN 4
 	StaffAI_TargetAreas:
