@@ -1,3 +1,10 @@
+#ifdef _FE8_
+
+	#ifndef FreeSpace
+		#define FreeSpace $B2A610
+		ORG FreeSpace
+	#endif
+
 #include "_ItemArrayMacros.event"
 
 //fancy staves
@@ -17,3 +24,7 @@
 
 //custom items
 #include "SelfHealItems/MigVul_Setup.event"
+
+#else
+	ERROR "You are not assembling FE8 events!"
+#endif
