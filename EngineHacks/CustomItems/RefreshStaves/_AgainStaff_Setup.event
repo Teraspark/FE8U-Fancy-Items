@@ -4,11 +4,10 @@
 	#endif
 	ORG FreeSpace
 #endif
-
 //Dance refresh staff
-#include "../_StaffTemplates.event"
 
 #ifndef ItemEffectRevamp
+	#include "../_ItemArrayMacros.event"
 	//Used to set the item effect to an item for you if you're not using the Item Effect revamp
 	#ifndef AgainStaffItemID
 		#define AgainStaffItemID 0x4D //replaces Recover staff
@@ -23,6 +22,9 @@
 	//SetStaffAI(0xA, AgainStaffItemID, Staff_AgainStaff_AI | 1)
 	POP
 #endif
+
+#include "../_StaffTemplates.event"
+
 /* reuses dance command help text instead
 #ifndef AgainStaffHelpText
 	#define AgainStaffHelpText 0x86E	//placeholder, replace with different text id later

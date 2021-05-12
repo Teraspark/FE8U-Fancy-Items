@@ -6,6 +6,7 @@
 #endif
 
 #ifndef ItemEffectRevamp
+	#include "../_ItemArrayMacros.event"
 	//Used to set the item effect to an item for you if you're not using the Item Effect revamp
 	#ifndef RewarpStaffItemID
 		#define RewarpStaffItemID 0x7F	//Used to set the item effect to an item for you if you're not using the Item Effect revamp
