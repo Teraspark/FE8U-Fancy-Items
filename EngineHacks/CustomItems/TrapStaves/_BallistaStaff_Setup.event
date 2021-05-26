@@ -5,6 +5,8 @@
 	ORG FreeSpace
 #endif
 
+#include "../_StaffTemplates.event"
+
 #ifndef ItemEffectRevamp
 	#include "../_ItemArrayMacros.event"
 	//Used to set the item effect to an item for you if you're not using the Item Effect revamp
@@ -21,8 +23,6 @@
 	SetStaffAI(0xB, BallistaStaffItemID, Staff_Ballista_AI | 1)
 	POP
 #endif
-
-#include "../_StaffTemplates.event"
 
 //Help text displayed during targeting
 #ifndef BallistaStaffHelpText
