@@ -17,13 +17,10 @@ ldrb 	r1, [r4, #0x12] 	@get the used item slot
 
 _blh SetupActiveUnitForStaff
 
-@update defender if necessary
+@update defender
 ldrb 	r0, [r4, #0xD]
-cmp 	r0, #0x0
-beq 	skipDefender
 _blh GetUnit
 _blh SetupTargetUnitForStaff
-skipDefender:
 
 @update exp and item durability
 @ mov 	r0, r6
