@@ -1,0 +1,6 @@
+## StealStaffName
+Swipe[X]
+
+## StealStaffDesc
+Steal an item from[NL]
+your target.[X]

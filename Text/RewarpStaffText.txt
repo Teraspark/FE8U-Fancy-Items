@@ -1,0 +1,6 @@
+## RewarpStaffName
+Rewarp [X]
+
+## RewarpStaffDesc
+Teleport user to [NL]
+another area.[X]

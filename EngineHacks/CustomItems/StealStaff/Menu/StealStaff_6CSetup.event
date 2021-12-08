@@ -38,7 +38,7 @@ POIN TS6C_ItemMenuUpdate
 StealStaff_MenuItemSelect:
 #include "StealStaff_MenuItemSelect.lyn.event"
 //text of message to display if you cannot select item
-WORD 0x855
+WORD ItemMenuGrayStealText
 // MESSAGE "Item Menu " CURRENTOFFSET
 
 #ifdef StealStaff_TakeWeapons

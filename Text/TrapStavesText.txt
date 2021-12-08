@@ -1,0 +1,36 @@
+## BallistaStaffName
+Arbalest[X]
+
+## BallistaStaffDesc
+Summons a ballista[X]
+
+## BallistaStaffUseDesc
+Summon a ballista[X]
+
+## BallistaStaffHelpText
+Select where to summon ballista.[X]
+
+## LightRuneName
+Light Rune [X]
+
+## LightRuneStaffDesc
+Create a light rune[NL]
+to block off paths [X]
+
+## LightRuneStaffUseDesc
+Block off a space [NL]
+with a light rune [X]
+
+## LightRuneHelpText
+Select where to summon a Light Rune[X]
+
+## MineStaffName
+Mine[X]
+
+## MineStaffDesc
+Creates a mine[X]
+
+## MineStaffUseDesc
+Place a mine on[NL]
+the map[X]
+
