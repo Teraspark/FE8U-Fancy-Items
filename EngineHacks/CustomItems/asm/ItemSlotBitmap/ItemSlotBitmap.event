@@ -2,6 +2,6 @@
 	#define ITEMSLOTBITMAP
 	
 	GetItemSlotBitmap:
-	#incbin "ItemSlotBitmapCalc.lyn.event"
+	#include "ItemSlotBitmapCalc.lyn.event"
 	
 #endif

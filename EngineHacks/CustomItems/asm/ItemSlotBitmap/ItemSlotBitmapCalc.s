@@ -1,6 +1,10 @@
 .thumb
 
 .include "_ItemSlotBitmapDefs.h.s"
+@arguments:
+	@r0 = acting unit
+	@r1 = target unit
+	@r2 = calc loop pointer
 
 push 	{r4-r5,lr}
 add 	sp, #-spSize			@create stack pocket struct
@@ -15,6 +19,7 @@ _blh GetUnitItemCount
 @skip to end if target has no items
 cmp 	r0, #0x0
 beq End
+strb 	r0, [r5,#spItemCount]
 @flip bits for filled item slots
 mov 	r1, #0x1
 lsl 	r1, r1, r0

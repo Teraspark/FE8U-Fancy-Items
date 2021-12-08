@@ -39,7 +39,7 @@ add 	r5, #0x2
 add 	r4, #0x1
 ldrb 	r0, [r6,#spItemCount]
 cmp 	r4, r0
-bne loop
+blt loop
 
 afterloop:
 pop 	{r4-r6}
