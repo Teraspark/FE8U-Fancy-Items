@@ -1,0 +1,7 @@
+#ifndef ITEMSLOTBITMAP
+	#define ITEMSLOTBITMAP
+	
+	GetItemSlotBitmap:
+	#incbin "ItemSlotBitmapCalc.lyn.event"
+	
+#endif
