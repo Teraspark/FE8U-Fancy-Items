@@ -46,9 +46,16 @@ ldr 	r1, [sp, #0x8]
 add 	r1, #0x1E
 add 	r1, r1, r0
 ldrh 	r6, [r1]
-mov 	r0, r6
-ldr 	r3, [sp, #0x20]
-_blr 	r3
+
+mov 	r0, r10
+mov 	r1, #0x1
+lsl 	r1, r1, r0
+ldr 	r0, [sp, #0x20]
+and 	r0, r1
+@ mov 	r0, r6
+@ ldr 	r3, [sp, #0x20]
+@ _blr 	r3
+
 mov 	r4, r0
 mov 	r0, r7
 _blh 	Text_Clear

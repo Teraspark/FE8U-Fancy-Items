@@ -3,6 +3,7 @@
 	
 	#include "ItemTargeting/_ItemEffectTargeting.event"
 	#include "asm/Freeselect/FreeSelect6C.event"
+	#include "asm/ItemSlotBitmap/ItemSlotBitmap.event"
 	#include "StaffAI/_StaffAI_Setup.event"
 	
 	//#define TargetSelection 0x0804FA3C

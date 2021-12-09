@@ -4,12 +4,17 @@
 @arguments:
 	@r0 = Pointer to Command definition
 	@r1 = Command definition index
-	@r2 = Pointer to Command Condition
+@return:
+	@r0 =
+		@ 1 means usable
+		@ 2 greys out the command
+		@ 3 makes the command unusable
+
+@Command Usability
 push 	{r4-r5, lr}
 mov 	r4, r1
-mov 	r5, r2
-ldr 	r0, =gActionData
-ldrb 	r0, [r0, #0xD]
+ldr 	r5, =gActionData
+ldrb 	r0, [r5, #0xD]
 _blh GetUnit
 mov 	r2, r0
 lsl 	r1, r4, #0x1
@@ -21,11 +26,12 @@ bne CommandCheck
 mov 	r0, #0x3
 b End
 CommandCheck:
-@cmp 	r5, #0x0
-@beq CommandUsable
-mov 	r1, r2
-_blr r5
-cmp 	r0, #0x0
+mov 	r0, #0x1
+lsl 	r0, r0, r4
+@get bitmap from action struct
+ldrb 	r1, [r5, #0x15] @get item slot bitmap
+and 	r1,r0
+cmp 	r1, #0x0
 bne CommandUsable
 mov 	r0, #0x2
 b End

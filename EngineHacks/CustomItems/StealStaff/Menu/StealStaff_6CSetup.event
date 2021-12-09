@@ -2,7 +2,7 @@ ALIGN 4
 #include "../../_Staff6C_BasicCases.event"
 
 //list of pointers here
-StealStaff_TargetSelect: //0x59D318 0x59D3B8
+StealStaff_TargetSelect: //0x59D318 (Steal) 0x59D3B8 (hammerne)
 POIN	StealStaff6C_tsStart |1 //0x2421C
 WORD	0x0
 WORD	0x0
@@ -21,6 +21,8 @@ StaffTargetInit(StealStaffHelpText, rsGreen, Staff6C_tsStart2)
 StealStaff6C_APress:
 #include "StealStaff_APress.lyn.event"
 POIN StealStaff_6CMenu 
+POIN GetItemSlotBitmap
+POIN StealStaff_ItemCalcLoop
 
 StealStaff6C_MenuPortrait:
 #include "StealStaff_MenuStart.lyn.event"
@@ -29,32 +31,13 @@ StealStaff6C_MenuPortrait:
 StealStaff6C_OnTargetChange:
 #include "tsUpdateOnSwitch.lyn.event"
 POIN TS6C_ItemMenuUpdate 
-#ifdef StealStaff_TakeWeapons
-	POIN rfTrueCheck
-#else
-	POIN $17054 //vanilla is item stealable routine
-#endif
+POIN GetItemSlotBitmap
+POIN StealStaff_ItemCalcLoop
 
 StealStaff_MenuItemSelect:
 #include "StealStaff_MenuItemSelect.lyn.event"
 //text of message to display if you cannot select item
 WORD ItemMenuGrayStealText
-// MESSAGE "Item Menu " CURRENTOFFSET
-
-#ifdef StealStaff_TakeWeapons
-	StealStaff_CommandCheck:
-	ItemSelectCommand(rfTrueCheck, ItemMenu_IsCommandUsable)
-
-	StealStaff_CommandDraw:
-	ItemSelectCommand(rfTrueCheck, ItemMenu_DrawCommand)
-#else
-	StealStaff_CommandCheck:
-	ItemSelectCommand($17054, ItemMenu_IsCommandUsable)
-
-	StealStaff_CommandDraw:
-	ItemSelectCommand($17054, ItemMenu_DrawCommand)
-
-#endif
 
 // 0x59D088 is Steal command's 6Cmenu's pointer list
 StealStaff_6CMenu: 
@@ -73,8 +56,8 @@ POIN 0xD7CB8 //raw text pointer
 SHORT 0x0 0x0 //name text id; rmenu text id
 BYTE 0x0 0x1F //color index; idk
 SHORT 0x0 //idk
-POIN StealStaff_CommandCheck|1 // 29A4C 0x24304 usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
-POIN StealStaff_CommandDraw|1 //0x24348 draw routine
+POIN ItemMenu_IsCommandUsable|1 // 29A4C 0x24304 usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
+POIN ItemMenu_DrawCommand|1 //0x24348 draw routine
 POIN StealStaff_MenuItemSelect|1 //0x2439C effect routine
 WORD 0x0 //idle routine
 WORD 0x0 0x0 //hover routine; opposite of hover?
@@ -83,8 +66,8 @@ POIN 0xD7CB8 //raw text pointer
 SHORT 0x0 0x0 //name text id; rmenu text id
 BYTE 0x0 0x20 //color index; idk
 SHORT 0x0 //idk
-POIN StealStaff_CommandCheck|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
-POIN StealStaff_CommandDraw|1 //draw routine
+POIN ItemMenu_IsCommandUsable|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
+POIN ItemMenu_DrawCommand|1 //draw routine
 POIN StealStaff_MenuItemSelect|1 //effect routine
 WORD 0x0 //idle routine
 WORD 0x0 0x0 //hover routine; opposite of hover?
@@ -93,8 +76,8 @@ POIN 0xD7CB8 //raw text pointer
 SHORT 0x0 0x0 //name text id; rmenu text id
 BYTE 0x0 0x21 //color index; idk
 SHORT 0x0 //idk
-POIN StealStaff_CommandCheck|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
-POIN StealStaff_CommandDraw|1 //draw routine
+POIN ItemMenu_IsCommandUsable|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
+POIN ItemMenu_DrawCommand|1 //draw routine
 POIN StealStaff_MenuItemSelect|1 //effect routine
 WORD 0x0 //idle routine
 WORD 0x0 0x0 //hover routine; opposite of hover?
@@ -103,8 +86,8 @@ POIN 0xD7CB8 //raw text pointer
 SHORT 0x0 0x0 //name text id; rmenu text id
 BYTE 0x0 0x22 //color index; idk
 SHORT 0x0 //idk
-POIN StealStaff_CommandCheck|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
-POIN StealStaff_CommandDraw|1 //draw routine
+POIN ItemMenu_IsCommandUsable|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
+POIN ItemMenu_DrawCommand|1 //draw routine
 POIN StealStaff_MenuItemSelect|1 //effect routine
 WORD 0x0 //idle routine
 WORD 0x0 0x0 //hover routine; opposite of hover?
@@ -113,8 +96,8 @@ POIN 0xD7CB8 //raw text pointer
 SHORT 0x0 0x0 //name text id; rmenu text id
 BYTE 0x0 0x23 //color index; idk
 SHORT 0x0 //idk
-POIN StealStaff_CommandCheck|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
-POIN StealStaff_CommandDraw|1 //draw routine
+POIN ItemMenu_IsCommandUsable|1 //usability routine {parameters:(r0 = 6Cmenu pointer; r1= item id)?}
+POIN ItemMenu_DrawCommand|1 //draw routine
 POIN StealStaff_MenuItemSelect|1 //effect routine
 WORD 0x0 //idle routine
 WORD 0x0 0x0 //hover routine; opposite of hover?

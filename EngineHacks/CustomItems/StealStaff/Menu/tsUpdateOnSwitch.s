@@ -2,7 +2,8 @@
 .include "../../_ItemEffectDefinitions.h.s"
 
 .equ UpdateItemBox, OffsetList + 0x0
-.equ ICondition, OffsetList + 0x4
+.equ StealableItemCheck, OffsetList + 0x4
+.equ StealableItemCalcLoop, OffsetList + 0x8
 
 @arguments:
 	@r0 = proc pointer
@@ -18,7 +19,16 @@ _blh 	ChangeActiveUnitFacing
 mov 	r0, #0x2
 ldsb 	r0, [r4, r0]
 _blh GetUnit
-ldr 	r1, ICondition
+mov 	r4, r0
+ldr 	r1, =gActionData
+ldrb 	r0, [r1,#0xC]
+_blh GetUnit
+mov 	r1, r4
+ldr 	r2, StealableItemCalcLoop
+ldr 	r3, StealableItemCheck
+_blr r3
+mov 	r1, r0
+mov 	r0, r4
 ldr 	r3, UpdateItemBox
 _blr 	r3
 pop 	{r4}

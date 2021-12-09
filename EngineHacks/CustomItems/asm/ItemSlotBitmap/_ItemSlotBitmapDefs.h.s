@@ -37,12 +37,14 @@
 	.set GetUnitEquippedItem,               0x08016B28 
 		@ arguments: r0 = Unit Struct pointer;
 		@ returns: r0 = Item Short
+	.set GetUnitEquippedItemSlot,           0x08016B58
+		@ arguments: r0 = Unit Struct pointer;
+		@returns: r0 = item slot index of equipped weapon
+			@-1 if no weapon equipped
 	.set GetItemAttributes,                 0x0801756C
 		@arguments: r0 = item/uses short
 	.set GetItemUses,                       0x08017584
 		@arguments: r0 = item/uses short
-	.set GetUnitItemCount,                  0x080179D8
-		@arguments: r0= ram unit pointer
 	.set GetItemMight,                      0x080175DC 
 		@ arguments: r0 = Item Short
 		@ returns: r0 = Might
@@ -54,6 +56,14 @@
 	.set GetItemCost,                       0x0801763C
 	.set GetItemUseEffect,                  0x0801773C
 	.set GetItemMaxCost,                    0x0801776C
+	.set GetUnitItemCount,                  0x080179D8
+		@arguments: r0= ram unit pointer
+	.set GetUnitCurrentHP,                  0x08019150
+	.set GetUnitMaxHp,                      0x08019190
+	.set GetUnit,                           0x08019430
+	.set CanUnitUseItem,                    0x08028870 
+		@ arguments: r0 = Unit Struct pointer, r1 = Item Short;
+		@ returns = 1 if unit can use item, 0 otherwise
 
 @Trap Related Routines
 	.set GetTrapAt,                         0x0802E1F0

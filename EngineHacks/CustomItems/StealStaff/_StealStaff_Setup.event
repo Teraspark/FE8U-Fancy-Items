@@ -5,6 +5,10 @@
 	ORG FreeSpace
 #endif
 
+//Steal Staff cannot steal items with given attributes
+//set to 0 to let everything be stolen
+#define StealStaff_BanAttributes "IsWeapon|IsStaff"
+
 #include "../_StaffTemplates.event"
 
 #ifndef ItemEffectRevamp
@@ -29,8 +33,14 @@
 	#define StealStaffHelpText 0x86D	//placeholder, replace with different text id later
 #endif
 
+//list of routines that determine
+// which items can be stolen
+StealStaff_ItemCalcLoop:
+POIN StealStaff_IgnoreItems
+WORD 0 //end of list
+
 //comment out the line below to prevent the steal staff from taking weapons
-#define StealStaff_TakeWeapons
+// #define StealStaff_TakeWeapons
 
 //creates the staff's map animation
 ALIGN 4
@@ -38,14 +48,22 @@ ALIGN 4
 ALIGN 4
 #include "Animation/thief.event"
 
+ALIGN 4
+StealStaff_IgnoreItems:
+#include "../asm/ItemSlotBitmap/CalcRoutines/ISB_RemoveItemWithAttributes.lyn.event"
+WORD StealStaff_BanAttributes
+
 StealStaff_TCondition:
-	#incbin "Usability/StealStaff_TCondition.dmp"
-	POIN 0x24D8C
-	#ifdef StealStaff_TakeWeapons
+	#include "Usability/StealStaff_TCondition.lyn.event"
+	POIN 0x24D8C //allegience routine
+	POIN GetItemSlotBitmap
+	POIN StealStaff_ItemCalcLoop
+/* 	#ifdef StealStaff_TakeWeapons
 		POIN rfTrueCheck
 	#else
 		POIN 0x17054
 	#endif
+ */
 
 StealStaff_RangeSetup:
 rfItemRangeSetup(StealStaff_TCondition, Item_TURange) //based on Steal 0x25BA0
