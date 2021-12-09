@@ -56,7 +56,7 @@ mov 	r1, #0x0
 lsl 	r4, r4, #0x18
 asr 	r4, r4, #0x18
 mov 	r9, r4
-cmp 	r4, r0
+cmp 	r4, #0x0
 bne 	Skip1
 mov 	r1, #0x1
 Skip1:
