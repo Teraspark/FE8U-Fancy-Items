@@ -24,15 +24,14 @@ POIN StealStaff_6CMenu
 POIN GetItemSlotBitmap
 POIN StealStaff_ItemCalcLoop
 
-StealStaff6C_MenuPortrait:
-#include "StealStaff_MenuStart.lyn.event"
-
-// MESSAGE "StealStaff OnSwitch" StealStaff6C_OnTargetChange
 StealStaff6C_OnTargetChange:
 #include "tsUpdateOnSwitch.lyn.event"
 POIN TS6C_ItemMenuUpdate 
 POIN GetItemSlotBitmap
 POIN StealStaff_ItemCalcLoop
+
+StealStaff6C_MenuPortrait:
+#include "StealStaff_MenuStart.lyn.event"
 
 StealStaff_MenuItemSelect:
 #include "StealStaff_MenuItemSelect.lyn.event"
