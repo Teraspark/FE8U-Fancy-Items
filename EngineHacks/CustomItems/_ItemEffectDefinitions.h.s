@@ -68,9 +68,15 @@
 	.set GetUnitEquippedItem,               0x08016B28 
 		@ arguments: r0 = Unit Struct pointer;
 		@ returns: r0 = Item Short
+	.set GetUnitEquippedItemSlot,           0x08016B58
+		@ arguments: r0 = Unit Struct pointer;
+		@returns: r0 = item slot index of equipped weapon
+			@-1 if no weapon equipped
 	.set GetItemNameString,                 0x080174F4
 		@arguments: r0 = Item Short
 		@returns: r0 = Item Name string pointer
+	.set GetItemAttributes,                 0x0801756C
+		@arguments: r0 = item/uses short
 	.set GetItemUses,                       0x08017584
 		@arguments: r0 = item/uses short
 	.set GetItemMight,                      0x080175DC 
@@ -80,7 +86,11 @@
 	.set GetItemWeight,                     0x0801760C
 		@ arguments: r0 = Item Short
 		@ returns: r0 = weight
+	.set GetItemCrit,                       0x08017624
+	.set GetItemCost,                       0x0801763C
 	.set GetItemIconId,                     0x08017700
+	.set GetItemUseEffect,                  0x0801773C
+	.set GetItemMaxCost,                    0x0801776C
 	.set RemoveUnitBlankItems,              0x08017984
 		@arguments: r0 = ram unit pointer
 		@remove spaces in unit's inventory caused 
