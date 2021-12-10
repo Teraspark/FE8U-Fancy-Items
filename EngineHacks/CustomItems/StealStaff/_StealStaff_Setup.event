@@ -36,6 +36,7 @@
 //list of routines that determine
 // which items can be stolen
 StealStaff_ItemCalcLoop:
+POIN ISB_IgnoreEquippedWeapon
 POIN StealStaff_IgnoreItems
 WORD 0 //end of list
 
