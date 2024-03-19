@@ -208,6 +208,9 @@
 	
 @Menu Related Routines
 	.set DrawItemMenuCommand,               0x08016848
+		@ arguments:
+			@ r0 = relevant 6C_085B6510 Pointer
+			@ r1 = item id/uses short
 	.set UnitInfoWindow_DrawBase,           0x0803483c 
 	.set GetUnitInfoWindowX,                0x080349d4 
 	.set NewUnitInfoWindow_WithAllLines,    0x08034c18 
