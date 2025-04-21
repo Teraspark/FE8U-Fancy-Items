@@ -1,6 +1,6 @@
 .thumb
 
-.include "_ItemAIDefinitions.s"
+.include "_ItemAIDefinitions.h.s"
 
 .global ItemAI_ConfirmAction
 .type ItemAI_ConfirmAction, %function
