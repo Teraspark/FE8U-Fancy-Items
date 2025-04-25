@@ -25,10 +25,13 @@
 		#ifndef Item_GetStat_Crit
 			#define Item_GetStat_Crit 0x17624
 		#endif
-		#ifndef
+		#ifndef Item_GetCost
+			#define Item_GetCost 0x1763C
+		#endif
+		#ifndef Item_GetStat_WeaponRank
 			#define Item_GetStat_WeaponRank 0x176B8
 		#endif
-		#ifndef
+		#ifndef Item_GetStat_WEXP
 			#define Item_GetStat_WEXP 0x17798
 		#endif
 	#endif
