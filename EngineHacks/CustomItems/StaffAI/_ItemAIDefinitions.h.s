@@ -37,6 +37,7 @@
 .set gAIData,                     0x0203AA04 	@
 .set gAIActionData,               0x0203AA94 	@
 .set gActiveUnit,                 0x03004E50 	@
+.set gActiveUnitID,               0x0202BE44 	
 
 .set gMapSize,                    0x0202E4D4 	
 .set gMapUnit,                    0x0202E4D8 	
@@ -77,6 +78,9 @@
 	
 	.set AreAllegiancesAllied,         0x08024D8C
 	.set IsUnitEnemyWithActiveUnit,    0x0803C818
+	
+	.set DoesUnitHaveUsableStaff,      0x0803C44C
+	.set HasUsableStaffOrWeapon,       0x080402A8
 	
 @Trap Related Routines
 	.set GetTrapAt,                    0x0802E1F0
@@ -119,6 +123,9 @@
 	.set AiFindTargetingPosition,      0x0803C284
 		@arguments:
 			@r0= pointer for where to store position coordinates
+	.set AiSilencePriority,            0x08040300
+		@arguments:
+			@r0= target unit pointer
 	
 @Other Routines
 	.set Div,                          0x080D167C
