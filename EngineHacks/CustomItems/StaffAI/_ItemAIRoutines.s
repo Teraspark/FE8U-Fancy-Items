@@ -13,7 +13,7 @@ ItemAI_ConfirmAction:
 @arguments:
 	@r0 = stack pocket pointer
 	@r1 = action
-push 	{r4-r5,lr}
+push 	{r4-r5, lr}
 add 	sp, #-0xC
 mov 	r4, r0
 mov 	r5, r1
@@ -26,6 +26,10 @@ neg 	r1, r1
 @if there is no destination we terminate the routine early
 cmp 	r0, r1
 beq NoAction	
+@ store Value in action struct
+ldr r2, =#gActionData
+ldrb r0, [r4, #spValue]
+strb r0, [r2, #0x15]
 @store result in AAS
 mov 	r3, r4
 add 	r3, #spTargetTile
@@ -49,7 +53,7 @@ ldrh	r0, [r2]
 ldrh	r1, [r2,#0x2]
 @get target unit id
 ldr 	r3, [r4, #spTargetUnit]
-ldr 	r2, [r4, #spItemSlot]
+ldrb	r2, [r4, #spItemSlot]
 str 	r2, [sp]
 ldr 	r2, [r4, #0x4]
 str 	r2, [sp, #0x4]
@@ -83,7 +87,7 @@ beq NoTargetTile
 mov 	r0, #spTargetTile
 add 	r0, r4, r0
 strh 	r2, [r0]
-strh 	r3, [r0,#0x2]
+strh 	r3, [r0, #0x2]
 NoTargetTile:
 @store coordinates
 mov 	r1, r4
@@ -92,10 +96,10 @@ add 	r1, #spNewDestination
 add 	r2, #spDestination
 ldrh 	r0, [r1]
 strh 	r0, [r2]
-ldrh 	r0, [r1,#0x2]
-strh 	r0, [r2,#0x2]
-@ldr 	r0, [r4,#0xC]
-@str 	r0, [r4,#0x14]
+ldrh 	r0, [r1, #0x2]
+strh 	r0, [r2, #0x2]
+ldrb 	r0, [r4, #spNewValue]
+strb 	r0, [r4, #spValue]
 pop 	{r4}
 bx 	lr
 .align
@@ -106,7 +110,7 @@ ItemAI_RangeBuilder:
 	@r1 = y
 	@r2 = pointer to item range in stack pocket
 
-push {r4-r6,lr}
+push {r4-r6, lr}
 mov 	r4, r0
 mov 	r5, r1
 mov 	r6, r2

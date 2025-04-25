@@ -16,11 +16,14 @@ push	{r5-r6}
 mov 	r9,r1
 @initialize stack pocket
 add 	sp, #-spSize			@create stack pocket
-str 	r0,[sp,#spItemSlot]		@store item slot number in stack pocket
+mov 	r1, sp
+strb 	r0, [r1, #spItemSlot]		@store item slot number in stack pocket
 mov 	r0, #0x0	
 mov 	r8, r0 	
 str 	r0, [sp, #0x4]
 str 	r0, [sp, #0x8]
+strb	r0, [r1, #spValue]
+strb	r0, [r1, #spNewValue]
 str 	r0, [sp, #spTargetUnit]
 mov 	r1, #0x1
 neg 	r1, r1
@@ -47,7 +50,7 @@ bne 	End
 
 @get item range
 ldr 	r0, [r7]	@get char pointer
-ldr 	r1, [sp, #spItemSlot] @get item slot
+ldrb	r1, [sp, #spItemSlot] @get item slot
 lsl 	r1, r1, #0x1	
 add 	r1, #0x1E	@get item id
 ldrh	r1, [r0,r1]

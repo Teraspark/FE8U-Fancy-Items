@@ -14,18 +14,26 @@
 
 @Stack pocket values for the new staff ai routines
 	@the size of the stack pocket
-	.set spSize,             0x30
+	.set spSize,            0x30
 	@0x0 is for passing arguments
 	@0x4 and 0x8 seem to only be used in the unused
 		@ warp ai so i don't use them just in case
-	.set spItemSlot,         0x0C
-	.set spItemRange,        0x10
-	.set spDestination,      0x14
-	.set spTargetTile,       0x18
-	.set spTargetUnit,       0x1C
-	.set spPriority,         0x20
-	.set spNewDestination,   0x24
-	.set spNewPriority,      0x28
+		@ they are also passed to AiSetDecision
+		@ so always initialize both to 0 if unused
+	@ spValue gets stores in 0x15 of gActionData
+		@ to allow making AI for items like Hammerne staff
+	.set spUnitMove,        0x0C
+	.set spItemSlot,        0x10
+	.set spValue,           0x12
+	.set spNewValue,        0x13
+	.set spItemRange,       0x14
+	.set spTargetTile,      0x18
+	.set spTargetUnit,      0x1C
+	.set spPriority,        0x20
+	.set spDestination,     0x24
+	.set spNewDestination,  0x28
+	.set spNewPriority,     0x2C
+
 @Return Values for AICondition routines
 	@turn these into .set values later
 	@0x1	update current target to the new target
